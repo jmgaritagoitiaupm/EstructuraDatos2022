@@ -1,8 +1,6 @@
-package com.company;
-
 public class Alumno {
     private String nombre, matricula;
-    double calificacion;
+    private double calificacion;
     private int numAsignaturas;
     private String asignaturas[];
     private final int maxAsignaturas = 5;
@@ -62,7 +60,7 @@ public class Alumno {
         }
     }
 
-    public void mostraralumno(){
+    public void mostrarAlumno(){
         System.out.println(this.nombre + " Matr:" + this.matricula
             + " (" + this.calificacion + ")");
         this.mostrarAsignaturas();
