@@ -1,3 +1,5 @@
+import java.sql.BatchUpdateException;
+
 public class ListaOrdinal {
 
 	private NodoListaOrdinal inicio, fin;
@@ -8,7 +10,64 @@ public class ListaOrdinal {
 		fin = null;
 		numElementos = 0;
 	}
+	public void eliminarRepetidos(int dato){
+		NodoListaOrdinal actual = inicio;
+		while (actual!=null && actual.getDato()!=dato){
+			actual=actual.getSiguiente();
+		}
+		if(actual!=null){
+			NodoListaOrdinal anterior = actual;
+			actual = actual.getSiguiente();
+			while (actual!=null){
+				if(actual.getDato()==dato){
+					anterior.setSiguiente(actual.getSiguiente());
+					actual=actual.getSiguiente();
+				}else{
+					anterior=actual;
+					actual=actual.getSiguiente();
+				}
+			}
+		}
+	}
+	public void duplicarParesQuitarImpares(){
+		NodoListaOrdinal actual, anterior=null;
+		actual = inicio;
+		while (actual!=null){
+			if(actual.getDato()%2==0){
+				NodoListaOrdinal nuevo = new NodoListaOrdinal(actual.getDato(), actual.getSiguiente());
+				actual.setSiguiente(nuevo);
+				actual = nuevo.getSiguiente();
+				anterior = nuevo;
+			}else{ // borrar nodo actual
+				if(this.inicio== actual){
+					inicio = inicio.getSiguiente();
+				}else{
+					anterior.setSiguiente(actual.getSiguiente());
+				}
+				actual=actual.getSiguiente();
+			}
+		}
+	}
 
+	public void triplicar(){
+		NodoListaOrdinal actual = inicio;
+		while (actual!=null){
+			NodoListaOrdinal nuevo1 = new NodoListaOrdinal(actual.getDato(),actual.getSiguiente());
+			NodoListaOrdinal nuevo2 = new NodoListaOrdinal(actual.getDato(),nuevo1);
+			actual.setSiguiente(nuevo2);
+			actual=nuevo1.getSiguiente();
+		}
+	}
+	public void mostrar(){
+		String cadena = "[";
+		IteradorListaOrdinal it = getIterador();
+		while(it.hasNext()){
+			int e = it.next();
+			cadena += e + " ";
+		}
+		cadena += "]";
+		System.out.println(cadena);
+	}
 	public boolean vacia() {
 		return inicio == null;
 	}
