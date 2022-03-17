@@ -2,12 +2,11 @@ import java.sql.BatchUpdateException;
 
 public class ListaOrdinal {
 
-	private NodoListaOrdinal inicio, fin;
+	private NodoListaOrdinal inicio;
 	private int numElementos;
 
 	public ListaOrdinal() {
-		inicio = null;
-		fin = null;
+		inicio = null;		
 		numElementos = 0;
 	}
 	public void eliminarRepetidos(int dato){
@@ -80,9 +79,12 @@ public class ListaOrdinal {
 		if (this.vacia()) {
 			inicio = nuevo;
 		} else {
-			fin.setSiguiente(nuevo);
+			NodoListaOrdinal aux = inicio;
+			while (aux.getSiguiente()!=null){
+				aux=aux.getSiguiente();
+			}
+			aux.setSiguiente(nuevo);
 		}
-		fin = nuevo;
 		numElementos++;
 	}
 
@@ -119,9 +121,6 @@ public class ListaOrdinal {
 					anterior.setSiguiente(actual.getSiguiente());
 				} else {
 					inicio = actual.getSiguiente();
-				}
-				if (actual == fin) {  // se borra el último
-					fin = anterior;
 				}
 				numElementos--;
 				borrado = true;
