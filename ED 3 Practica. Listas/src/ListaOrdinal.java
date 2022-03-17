@@ -9,6 +9,35 @@ public class ListaOrdinal {
 		inicio = null;		
 		numElementos = 0;
 	}
+
+	public ListaOrdinal(int[] elementos){
+		inicio = null;
+		numElementos = elementos.length;
+		NodoListaOrdinal actual = null;
+		for(int i=0; i<elementos.length; i++){
+			NodoListaOrdinal nuevo = new NodoListaOrdinal(elementos[i], null);
+			if(actual==null){
+				inicio=nuevo;
+			}else{
+				actual.setSiguiente(nuevo);
+			}
+			actual = nuevo;
+		}
+	}
+
+
+	public void insertarAContinuacion(int base, int nuevo){
+		NodoListaOrdinal actual = inicio;
+		while(actual!=null){
+			if(actual.getDato()!=base){
+				actual=actual.getSiguiente();
+			}else{
+				NodoListaOrdinal nodo = new NodoListaOrdinal(nuevo, actual.getSiguiente());
+				actual.setSiguiente(nodo);
+				actual=nodo.getSiguiente();
+			}
+		}
+	}
 	public void eliminarRepetidos(int dato){
 		NodoListaOrdinal actual = inicio;
 		while (actual!=null && actual.getDato()!=dato){
@@ -57,6 +86,75 @@ public class ListaOrdinal {
 			actual=nuevo1.getSiguiente();
 		}
 	}
+
+	public boolean contieneEjer9 (int valor){
+		NodoListaOrdinal actual, anterior;
+		actual = inicio;
+		anterior = null;
+		while (actual!=null && actual.getDato()!=valor){
+			anterior = actual;
+			actual = actual.getSiguiente();
+		}
+		if(actual==null){
+			return false;
+		}else {
+			anterior.setSiguiente(actual.getSiguiente());
+			actual.setSiguiente(inicio);
+			inicio = actual;
+			return true;
+		}
+	}
+	public void imagenEspecular(){
+		NodoListaOrdinal aux = inicio;
+		while (aux!=null){
+			NodoListaOrdinal nuevo = new NodoListaOrdinal(aux.getDato(), inicio);
+			inicio = nuevo;
+			aux = aux.getSiguiente();
+		}
+	}
+
+	public void insertarCeros(){
+		NodoListaOrdinal actual = inicio;
+		int suma = 0;
+		while (actual!=null){
+			suma += actual.getDato();
+			actual=actual.getSiguiente();
+		}
+		actual=inicio;
+		while (actual!=null){
+			if(actual.getDato()==suma){
+				NodoListaOrdinal nuevo = new NodoListaOrdinal(0, actual.getSiguiente());
+				actual.setSiguiente(nuevo);
+				actual = actual.getSiguiente();
+			}else{
+				actual = actual.getSiguiente();
+			}
+		}
+	}
+
+	public void insertarCerosRec(){
+		if(!this.vacia()){
+			this.insertarCerosRecAux(0);
+		}
+	}
+
+	private int insertarCerosRecAux(int suma){
+		int x=0;
+		if(!this.vacia()){
+			int e = this.inicio.getDato();
+			inicio = inicio.getSiguiente();
+			x = this.insertarCerosRecAux(suma + e);
+			if(x==e){
+				NodoListaOrdinal nuevo = new NodoListaOrdinal(0,inicio);
+				inicio = nuevo;
+			}
+			NodoListaOrdinal nuevo = new NodoListaOrdinal(e,inicio);
+			inicio = nuevo;
+			return x;
+		}else
+			return suma;
+	}
+
 	public void mostrar(){
 		String cadena = "[";
 		IteradorListaOrdinal it = getIterador();

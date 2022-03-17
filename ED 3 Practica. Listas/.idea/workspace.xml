@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7de84e7e-581c-45b7-b5a7-c357607bce19" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Alumno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Evaluacion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GrupoAlumnos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IteradorListaCalificada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListaCalificada.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ListaOrdinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListaOrdinal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NodoListaCalificada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pruebas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

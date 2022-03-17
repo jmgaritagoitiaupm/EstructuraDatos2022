@@ -35,10 +35,14 @@ public class Principal {
     public static void main(String[] args) {
         ListaOrdinal lista = new ListaOrdinal()    ;
         lista.insertar(1);
-        lista.insertar(6);
-        //lista.insertar(4);
+        lista.insertar(2);
+        lista.insertar(4);
+        lista.insertar(2);
+        lista.mostrar();
+        lista.insertarAContinuacion(2,2);
+        lista.mostrar();
         //lista.insertar(5);
         //lista.insertar(5);
-        System.out.println(comprobarUltimo(lista));
+
     }
 }
